@@ -1,0 +1,77 @@
+/* Estilos globais — Paraíso das Persianas */
+
+:root {
+  --verde-900: #10281a;
+  --verde-800: #163c22;
+  --verde-700: #1f6b34;
+  --verde-600: #2a8442;
+  --verde-500: #3c9a52;
+  --verde-200: #cfe6d1;
+  --verde-100: #e9f3e8;
+  --marfim: #f8f7f1;
+  --branco: #ffffff;
+  --carvao: #1c211d;
+  --carvao-suave: #4a534c;
+  --linha: rgba(28, 33, 29, 0.1);
+
+  --fonte-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --fonte-corpo: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --sombra-suave: 0 1px 2px rgba(16, 40, 26, 0.06), 0 8px 24px rgba(16, 40, 26, 0.08);
+  --sombra-forte: 0 20px 45px rgba(16, 40, 26, 0.18);
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--marfim);
+  color: var(--carvao);
+  font-family: var(--fonte-corpo);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fonte-display);
+  font-weight: 500;
+  margin: 0;
+  color: var(--verde-900);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

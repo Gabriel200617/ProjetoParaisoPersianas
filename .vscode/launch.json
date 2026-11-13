@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "DashboardApplication",
+      "request": "launch",
+      "mainClass": "com.paraiso.dashboard.DashboardApplication",
+      "projectName": "dashboard"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

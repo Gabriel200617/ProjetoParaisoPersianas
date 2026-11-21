@@ -1,0 +1,94 @@
+<main class="auth">
+  <aside class="painel">
+    <img class="painel__foto" src="assets/hero-sala.webp" alt="" />
+
+    <a routerLink="/" class="painel__marca">
+      <span class="painel__selo">
+        <img src="assets/logo.png" alt="" width="40" height="40" />
+      </span>
+      <span>Paraíso <em>das Persianas</em></span>
+    </a>
+
+    <div class="painel__texto">
+      <p class="painel__eyebrow">Área restrita</p>
+      <h2>A luz certa, do orçamento à instalação.</h2>
+      <p class="painel__desc">Acesso exclusivo para a equipe Paraíso das Persianas.</p>
+    </div>
+
+    <div class="painel__faixas" aria-hidden="true">
+      @for (i of faixas; track i) {
+        <span></span>
+      }
+    </div>
+  </aside>
+
+  <section class="auth__lado-form">
+    <a routerLink="/" class="auth__voltar">← Voltar ao site</a>
+
+    <div class="auth__caixa">
+      <h1>Bem-vindo de volta</h1>
+      <p class="auth__sub">Entre com seu e-mail e senha para acessar a área restrita.</p>
+
+      @if (erro()) {
+        <p class="auth__alerta" role="alert">{{ erro() }}</p>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            placeholder="voce@email.com"
+            [class.invalido]="invalido('email')"
+          />
+          @if (invalido('email')) {
+            <small class="campo__erro">Informe um e-mail válido.</small>
+          }
+        </div>
+
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <div class="campo__entrada">
+            <input
+              id="senha"
+              [type]="mostrarSenha() ? 'text' : 'password'"
+              formControlName="senha"
+              autocomplete="current-password"
+              placeholder="Sua senha"
+              [class.invalido]="invalido('senha')"
+            />
+            <button
+              type="button"
+              class="campo__olho"
+              (click)="mostrarSenha.set(!mostrarSenha())"
+              [attr.aria-pressed]="mostrarSenha()"
+            >
+              {{ mostrarSenha() ? 'Ocultar' : 'Mostrar' }}
+            </button>
+          </div>
+          @if (invalido('senha')) {
+            <small class="campo__erro">A senha deve ter ao menos 6 caracteres.</small>
+          }
+        </div>
+
+        <button class="auth__botao" type="submit" [disabled]="enviando()">
+          {{ enviando() ? 'Entrando…' : 'Entrar' }}
+        </button>
+      </form>
+
+      <p class="auth__troca">
+        Problemas para acessar?
+        <a
+          href="https://wa.me/5571981492623?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20para%20acessar%20minha%20conta."
+          target="_blank"
+          rel="noopener"
+        >
+          Fale no WhatsApp
+        </a>
+      </p>
+    </div>
+  </section>
+</main>

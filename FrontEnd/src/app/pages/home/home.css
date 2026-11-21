@@ -376,7 +376,7 @@ button:focus-visible {
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   background: var(--verde-900);
 }
 .item-galeria img {

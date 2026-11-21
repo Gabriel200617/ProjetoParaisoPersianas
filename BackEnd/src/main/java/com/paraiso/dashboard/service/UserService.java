@@ -1,16 +1,17 @@
 
 package com.paraiso.dashboard.service;
 
+import java.util.Optional;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.paraiso.dashboard.dto.LoginRequestDTO;
 import com.paraiso.dashboard.dto.UserRequestDTO;
 import com.paraiso.dashboard.dto.UserResponseDTO;
 import com.paraiso.dashboard.model.UserModel;
 import com.paraiso.dashboard.repository.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -87,7 +88,12 @@ public class UserService {
   }
 
   public UserResponseDTO login(LoginRequestDTO dto){
-    UserModel user = new UserModel();
+    
+    UserModel user = userRepository.findByEmail(dto.email())
+        .orElseThrow(() -> 
+            new IllegalArgumentException("Nome/e-mail ou senha inválidos."));
+
+
       if (dto.password() == null || !passwordEncoder.matches(dto.password(), user.getPassword())){
         throw new IllegalArgumentException("Nome/e-mail ou senha inválidos.");
       }
